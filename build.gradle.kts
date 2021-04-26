@@ -1,13 +1,20 @@
 plugins {
-    // Apply the java-library plugin for API and implementation separation.
     `java-library`
-    java
-    application
 }
 
-repositories {
-    mavenCentral()
+configurations {
+    implementation {
+        resolutionStrategy.failOnVersionConflict()
+    }
 }
 
-dependencies {
+sourceSets {
+    main {
+        java.srcDir("src/main/java/")
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
